@@ -15,7 +15,7 @@ $(document).ready(function(){
 });
 
 function initialize(){
-    document.getElementById("adress").value = window.localStorage.getItem("adress");
+    document.getElementById("adress").value = window.localStorage.getItem("url");
     document.getElementById("nickname").value = window.localStorage.getItem("nickname");
     document.getElementById("password").value = window.localStorage.getItem("password");
 }
@@ -29,7 +29,7 @@ function saveSettings(){
         alert(password);
     }
     
-    window.localStorage.setItem("adress", adress);
+    window.localStorage.setItem("url", adress);
     window.localStorage.setItem("nickname", nickname);
     window.localStorage.setItem("password", password);
 }
