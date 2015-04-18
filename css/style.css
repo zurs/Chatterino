@@ -1,13 +1,22 @@
-.btn{
+.setting-btn{
     width: 49%;
 }
 .menu-btn{
-    width: 90%;
-    text-align: center;
+    width: 100%;
     margin-bottom: 1%;
 }
 .input-group{
-    width: 99%;
-    text-align: center;
+    width: 100%;
     margin-bottom: 2%;
+}
+.btn-group{
+    width: 100%;
+}
+#menubuttons{
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+}
+h1{
+    text-align: center;
 }
