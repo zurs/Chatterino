@@ -7,7 +7,6 @@ $(document).ready(function(){
     $("#password").on("change", function(){
         cryptedPass = false;
     });
-    $("#create").click(alert("Varför?"));
     $("#save").click(function(){
         saveSettings();
         alert("Sparat");
