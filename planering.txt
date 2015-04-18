@@ -15,8 +15,7 @@ returnNewMessages($latestMessageID);
 
 --------Uppbyggnad utav databaserna--------
 chat
-    senderID
+    senderNick
     messageID
     message
-    date
-    timestamp
+    datetime
