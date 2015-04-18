@@ -23,5 +23,12 @@ h1{
 #conversationwrapper{
     width: 100%;
     height: 80%;
-    overflow: scro;
+    overflow: scroll;
+}
+#writer{
+    position: fixed;
+    bottom: 0px;
+}
+.messagenick{
+    text-decoration: underline;
 }
