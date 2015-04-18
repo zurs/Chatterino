@@ -4,6 +4,7 @@ function sendToServer(json, cFunc){ // cFunk står för customFunction som händ
 
     var addjson = '{"nickname":"' + nickname + '", "password":"' + password + '",'; // Det som ska läggas till i json
     var fulljson = addjson.concat(json.slice(1)); // Lägger ihop strängarna
+    alert("Json: " + fulljson + "; URL: " + window.localStorage.getItem("url"));
     //Skicka kommandot till servern
     $.post(window.localStorage.getItem("url"), fulljson, cFunc, "text");
 }
@@ -34,6 +35,6 @@ function getNewMessages(){
             }
             
         }
-    }
+    };
     sendToServer(json, cFunc);
 }
