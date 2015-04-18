@@ -1,0 +1,22 @@
+--------Variabler i appen(localstorage)--------
+adress
+nickname
+password(sha1)
+
+--------Funktioner som appen ska kalla--------
+getNewMessages(latestMessage);
+sendMessage(message);
+setSettings(adress, nickname, password);
+
+--------Funktioner på bara servern--------
+authorize($dbh, $user, $password);
+addNewMessage($dbh, $user, $message);
+returnNewMessages($latestMessageID);
+
+--------Uppbyggnad utav databaserna--------
+chat
+    senderID
+    messageID
+    message
+    date
+    timestamp
