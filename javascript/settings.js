@@ -46,7 +46,6 @@ function createSettings(){
     var json = '{"function":"createUser"}';
     var cFunc = function(data){
         if(data == "true"){
-            
             alert("Your nickname is now registered, just connect and chat!");
             window.location.href = "index.html";
         }
@@ -57,6 +56,7 @@ function createSettings(){
             alert("Something went wrong with the server");
         }
     }
+    saveSettings();
     sendToServer(json, cFunc);
     
 }
