@@ -1,5 +1,8 @@
 $(document).ready(function(){
     connect();
+    $("#message").click(function(){
+        sendMessage();
+    });
 })
 
 function sendMessage(){
