@@ -1,7 +1,9 @@
 $(document).ready(function(){
     connect();
     $("#send").click(function(){
-        
+        alert("sent");
+        sendMessage();
+        document.getElementById("message").value = "";
     });
 })
 
