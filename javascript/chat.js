@@ -1,7 +1,7 @@
 $(document).ready(function(){
     connect();
-    $("#message").click(function(){
-        sendMessage();
+    $("#send").click(function(){
+        
     });
 })
 
