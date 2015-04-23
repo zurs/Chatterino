@@ -13,7 +13,7 @@ function connect(){
     var cFunc = function(data){
         if(data == "true"){
             alert("Connected");
-            setInterval(getNewMessages(), "250");
+            setInterval(getNewMessages, 250);
         }
         else{
             alert("Couldn't connect");
@@ -30,7 +30,7 @@ function getNewMessages(){
             data = JSON.parse(data);
             var chatwindow = document.getElementById("conversationwrapper");
             for(var i = 0; i < data.length; i++){
-                chatwindow.innerHTML += "<p><span class='messagenick'>" + data[i].senderNick + "</span>" + data[i].messageText + "</p><br>";
+                chatwindow.innerHTML += "<p><span class='messagenick'>" + data[i].senderNick + "</span>" + data[i].messageText + "</p><br />";
             }
             
         }
