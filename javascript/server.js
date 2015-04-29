@@ -38,5 +38,6 @@ function getNewMessages(){
             
         }
     };
+    alert("Hämtar meddelanden");
     sendToServer(json, cFunc);
 }
