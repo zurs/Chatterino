@@ -25,7 +25,7 @@ function connect(){
     sendToServer(json, cFunc);
 }
 
-function getNewMessages(){
+function getNewMessages(){ // Körs varje 250 millisekund när man anslutit till servern
     var json = '{"function":"checkForNewMessages", "lastMessage":"' + lastMessage + '"}';
     var cFunc = function(data){
         if(!(data == "false")){
@@ -38,6 +38,5 @@ function getNewMessages(){
             
         }
     };
-    alert("Hämtar meddelanden");
     sendToServer(json, cFunc);
 }
