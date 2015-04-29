@@ -4,6 +4,10 @@ $(document).ready(function(){
         sendMessage();
         document.getElementById("message").value = "";
     });
+    
+    $('#back').click(function() {
+       window.location.href = "index.html";
+    });
 })
 
 function sendMessage(){
@@ -12,6 +16,8 @@ function sendMessage(){
     var cFunc = function(){
         alert("Skickat");
     };
-    alert("Skickar");
     sendToServer(json, cFunc);
 }
+
+//backBtn
+$('#back').height($('#back').width() * 5);

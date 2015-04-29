@@ -1,3 +1,5 @@
+var lastMessage = "0";
+
 function sendToServer(json, cFunc){ // cFunk står för customFunction som händer när svaret kommer tillbaka
     var nickname = window.localStorage.getItem("nickname");
     var password = window.localStorage.getItem("password");
@@ -24,13 +26,14 @@ function connect(){
 }
 
 function getNewMessages(){
-    var json = '{"function":"checkForNewMessages"}';
+    var json = '{"function":"checkForNewMessages", "lastMessage":"' + lastMessage + '"}';
     var cFunc = function(data){
         if(!(data == "false")){
             data = JSON.parse(data);
             var chatwindow = document.getElementById("conversationwrapper");
             for(var i = 0; i < data.length; i++){
                 chatwindow.innerHTML += "<p><span class='messagenick'>" + data[i].senderNick + "</span>" + data[i].messageText + "</p><br />";
+                lastMessage = data[i].messageID;
             }
             
         }
