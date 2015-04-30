@@ -13,14 +13,14 @@ function sendToServer(json, cFunc){ // cFunk står för customFunction som händ
 function connect(){
     var json = '{"function":"connection"}';
     var cFunc = function(data){
-        if(data == "true"){
-            alert("Connected");
-            setInterval(getNewMessages, 250);
+        data = JSON.parse(data);
+        var chatwindow = document.getElementById("conversationwrapper");
+        for(var i = 0; i < data.length; i++){
+            chatwindow.innerHTML += "<p><span class='messagenick'>" + data[i].senderNick + "</span>: " + data[i].messageText + "</p><br/>";
+            lastMessage = data[i].messageID;
         }
-        else{
-            alert("Couldn't connect");
-            window.location.href = "index.html";
-        }
+        
+        setInterval(getNewMessages, 250);
     };
     sendToServer(json, cFunc);
 }
@@ -32,7 +32,7 @@ function getNewMessages(){ // Körs varje 250 millisekund när man anslutit till
             data = JSON.parse(data);
             var chatwindow = document.getElementById("conversationwrapper");
             for(var i = 0; i < data.length; i++){
-                chatwindow.innerHTML += "<p><span class='messagenick'>" + data[i].senderNick + "</span>" + data[i].messageText + "</p><br />";
+                chatwindow.innerHTML += "<p><span class='messagenick'>" + data[i].senderNick + "</span>: " + data[i].messageText + "</p><br/>";
                 lastMessage = data[i].messageID;
             }
             
