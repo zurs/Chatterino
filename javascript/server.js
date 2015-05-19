@@ -23,6 +23,7 @@ function connect(){
         }
         
         setInterval(getNewMessages, 250);
+        alert("Connected and searching for new messages");
     };
     sendToServer(json, cFunc);
 }
