@@ -53,12 +53,37 @@ function addNewMessages(newArray, oldArray){
     for(var i = 0; i < oldArray.length; i++) {
         var messageFound = false;
         for(var j = 0; j < newArray.length; j++) {
-            if(oldArray[i].messageID == newArray[j].messageID) {messageFound = true; }
-            if(!messageFound) { //meddelandet hittades inte i gamla arrayen och måste därför vara ett nytt --> lägg till
-                chatwindow.innerHTML += "<p><span class'messagenick'>" + newArray[j].senderNick + "</span>: " + newArray[j].messageText + "</p><br/>";
+            if(oldArray[i].messageID == newArray[j].messageID){
+                messageFound = true; 
             }
+        }
+        if(!messageFound) { //meddelandet hittades inte i gamla arrayen och måste därför vara ett nytt --> lägg till
+                chatwindow.innerHTML += "<p><span class'messagenick'>" + newArray[j].senderNick + "</span>: " + newArray[j].messageText + "</p><br/>";
         }
     }
     
     oldArray = newArray; //sätter nya arrayen till gamla
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//kdkd
