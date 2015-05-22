@@ -1,5 +1,4 @@
-var lastMessage = "0";
-var oldArray = new Array();
+window.localStorage.setItem("lastMessage", 0);
 
 function sendToServer(json, cFunc){ // cFunk står för customFunction som händer när svaret kommer tillbaka
     var nickname = window.localStorage.getItem("nickname");
@@ -12,79 +11,41 @@ function sendToServer(json, cFunc){ // cFunk står för customFunction som händ
 }
 
 function connect(){
-    var json = '{"function":"connection"}';
+    var json = '{"func":"connection"}';
     var cFunc = function(data){
         data = JSON.parse(data);
-        var chatwindow = document.getElementById("conversationwrapper");
-        for(var i = 0; i < data.length; i++){
-            chatwindow.innerHTML += "<p><span class='messagenick'>" + data[i].senderNick + "</span>: " + data[i].messageText + "</p><br/>";
-            oldArray.push(data[i].messageID);
-            //lastMessage = data[i].messageID;
+        if(data != true){
+            alert("Det gick inte att ansluta till servern");
+            window.location.href = "index.html";
         }
-        
-        setInterval(getNewMessages, 250);
-        alert("Connected and searching for new messages");
+        setInterval(function(){getNewMessages();}, 250); // Kollar efter meddelanden 4 ggr per sekund
     };
     sendToServer(json, cFunc);
 }
 
 function getNewMessages(){ // Körs varje 250 millisekund när man anslutit till servern
-    var json = '{"function":"checkForNewMessages"}';
+    var json = '{"func":"checkForNewMessages"}';
     var cFunc = function(data){
         if(!(data == "false")){
             data = JSON.parse(data);
-            /* var chatwindow = document.getElementById("conversationwrapper");
-            for(var i = 0; i < data.length; i++){
-                chatwindow.innerHTML += "<p><span class='messagenick'>" + data[i].senderNick + "</span>: " + data[i].messageText + "</p><br/>";
-                lastMessage = data[i].messageID;
-            } */
-            
-            addNewMessages(data, oldArray);
+            addNewMessages(data.reverse()); // Hampes funktion för att lägga till meddelanden
             
         }
     };
     sendToServer(json, cFunc);
+    var conversationwrapper = document.getElementById("conversationwrapper");
+    conversationwrapper.scrollTop = conversationwrapper.scrollHeight;
 }
 
 //clientSide-kontroll för nya meddelanden
-
-function addNewMessages(newArray, oldArray){
+function addNewMessages(data){
+    var lastMessage = window.localStorage.getItem("lastMessage");
     var chatwindow = document.getElementById("conversationwrapper");
-    
-    for(var i = 0; i < oldArray.length; i++) {
-        var messageFound = false;
-        for(var j = 0; j < newArray.length; j++) {
-            if(oldArray[i].messageID == newArray[j].messageID){
-                messageFound = true; 
-            }
-        }
-        if(!messageFound) { //meddelandet hittades inte i gamla arrayen och måste därför vara ett nytt --> lägg till
-                chatwindow.innerHTML += "<p><span class'messagenick'>" + newArray[j].senderNick + "</span>: " + newArray[j].messageText + "</p><br/>";
+    for(i = 0; i < data.length; i++){
+        if(lastMessage < data[i].messageID){
+            chatwindow.innerHTML += "<p><span class='messagenick'>" + data[i].senderNick + "</span>: " + data[i].messageText + "</p>";
+            lastMessage = data[i].messageID;
         }
     }
-    
-    oldArray = newArray; //sätter nya arrayen till gamla
+    window.localStorage.setItem("lastMessage", lastMessage);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//kdkd

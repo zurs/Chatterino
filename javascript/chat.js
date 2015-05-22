@@ -8,14 +8,12 @@ $(document).ready(function(){
     $('#back').click(function() {
        window.location.href = "index.html";
     });
-})
+});
 
 function sendMessage(){
     var message = document.getElementById("message").value;
-    var json = '{"function":"newMessage", "messageText":"' + message + '"}';
-    var cFunc = function(){
-        alert("Skickat");
-    };
+    var json = '{"func":"newMessage", "messageText":"' + message + '"}';
+    var cFunc = function(){};
     sendToServer(json, cFunc);
 }
 

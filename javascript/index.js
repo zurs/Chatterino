@@ -8,7 +8,7 @@ $(document).ready(function(){
     });
     
     $("#exit").click(function(){
-        document.getElementById("alerts").innerHTML = '<div class="alert alert-danger" role="alert">Du kan inte avsluta ännu</div>';
+        navigator.app.exitApp();
     });
     
 });

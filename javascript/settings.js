@@ -9,7 +9,6 @@ $(document).ready(function(){
     });
     $("#save").click(function(){
         saveSettings();
-        alert("Sparat");
         window.location.href = "index.html";
     });
 });
@@ -26,7 +25,6 @@ function saveSettings(){
     var password = document.getElementById("password").value;
     if(!cryptedPass){
         password = CryptoJS.SHA1(password); //Kryptera till SHA1
-        alert(password);
     }
     
     window.localStorage.setItem("url", adress);
@@ -43,7 +41,7 @@ function createSettings(){
     password = CryptoJS.SHA1(password); //Kryptera till SHA1
     
     // Skapa json och skicka till servern
-    var json = '{"function":"createUser"}';
+    var json = '{"func":"createUser"}';
     var cFunc = function(data){
         if(data == "true"){
             alert("Your nickname is now registered, just connect and chat!");
