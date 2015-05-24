@@ -8,7 +8,8 @@ $(document).ready(function(){
     });
     
     $("#exit").click(function(){
-        navigator.app.exitApp();
+        //navigator.app.exitApp();
+        window.close();
     });
     
 });
