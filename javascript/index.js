@@ -7,9 +7,8 @@ $(document).ready(function(){
         window.location.href = "settings.html";
     });
     
-    $("#exit").click(function(){
-        //navigator.app.exitApp();
-        window.close();
-    });
+    /*$("#exit").click(function(){
+        navigator.app.exitApp();
+    }); */
     
 });
